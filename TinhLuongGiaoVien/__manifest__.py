@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+{
+    'name' : 'Tính Lương giáo viên',
+    'version' : '14.0.1.0.0',
+    'summary': 'Module cho việc tính lương cho giáo viên',
+    'sequence': '10',
+    'description': """Module tính luong giáo viên theo giờ dạy""",
+    'category': 'Generic Modules/Human Resources',
+    'website': 'https://www.facebook.com/Toannn207',
+    'depends' : [],
+    'data': [
+        'views/department.xml',
+        'views/major.xml',
+        'views/professor.xml',
+        'views/coefficient_teacher.xml',
+        'views/coefficient_subject.xml',
+        'views/subject.xml',
+        'views/semester.xml',
+        'views/course.xml',
+        'views/cost_course.xml',
+        'views/payroll_teacher.xml',
+        'views/list_payroll_teacher.xml',
+    ],
+    'demo': [],
+    'qweb': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'AGPL-3',
+}

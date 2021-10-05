@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="payroll_teacher_semester_action" model="ir.actions.act_window">
+            <field name="name">Kỳ học</field>
+            <field name="res_model">semester</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Chưa có kỳ học nào để hiển thị!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_payroll_teacher_semester">
+            <field name="name">Kỳ học</field>
+            <field name="model">semester</field>
+            <field name="arch" type="xml">
+                <tree string="Semester">
+                    <field name="id_semester"/>
+                    <field name="name_semester"/>
+                    <field name="time_open"/>
+                    <field name="time_close"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="payroll_teacher_setup_root"
+                name="Giảng viên và môn học"
+                sequence="10"/>
+
+        <menuitem id="payroll_teacher_coefficient_root"
+                name="Hệ số"
+                parent="payroll_teacher_setup_root"
+                sequence="10"/>
+
+        <menuitem id="payroll_teacher_semester" 
+                name="Kỳ học"
+                action="payroll_teacher_semester_action"
+                parent="payroll_teacher_coefficient_root"
+                sequence="10"/>
+</odoo>

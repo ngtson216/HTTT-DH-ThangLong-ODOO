@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data noupdate="1">
+            <record id="payroll_teacher_department_major_sequence" model="ir.sequence">
+                <field name="name">Thứ tự Ngành</field>
+                <field name="code">department.major.sequence</field>
+                <field name="prefix">MN</field>
+                <field name="padding">3</field>
+            </record>
+        </data>
+
+        <record id="payroll_teacher_department_major_action" model="ir.actions.act_window">
+            <field name="name">Ngành học</field>
+            <field name="res_model">department.major</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Chưa có ngành nào được hiển thị!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_payroll_teacher_deparment_major">
+            <field name="name">Danh sách các ngành</field>
+            <field name="model">department.major</field>
+            <field name="arch" type="xml">
+                <tree string="Major">
+                    <field name="id_major"/>
+                    <field name="name_major"/>
+                    <field name="short_name"/>
+                    <field name="id_department"/>
+                    <field name="name_department"/>
+                    <field name="time_open"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="payroll_teacher_setup_root"
+                name="Giáo viên và môn học"
+                sequence="10"/>
+
+        <menuitem id="payroll_teacher_department_major_root"
+                name="Khoa và Ngành"
+                parent="payroll_teacher_setup_root"
+                sequence="10"/>
+
+        <menuitem id="payroll_teacher_department_major" 
+                name="Ngành"
+                action="payroll_teacher_department_major_action"
+                parent="payroll_teacher_department_major_root"
+                sequence="10"/>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data noupdate="1">
+            <record id="payroll_teacher_course_sequence" model="ir.sequence">
+                <field name="name">Lớp học</field>
+                <field name="code">course.sequence</field>
+                <field name="prefix"></field>
+                <field name="padding">3</field>
+            </record>
+        </data>
+
+        <record id="payroll_teacher_course_action" model="ir.actions.act_window">
+            <field name="name">Lớp học</field>
+            <field name="res_model">course</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Chưa có lớp học nào được hiển thị!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_payroll_teacher_course">
+            <field name="name">Danh sách lớp học</field>
+            <field name="model">course</field>
+            <field name="arch" type="xml">
+                <tree string="Course">
+                    <field name="id_course"/>
+                    <field name="semester"/>
+                    <field name="teacher"/>
+                    <field name="rank_teacher"/>
+                    <field name="subject"/>
+                    <field name="credit"/>
+                    <field name="teaching_time"/>
+                    <field name="number_of_students"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="payroll_teacher_setup_root"
+                name="Giảng viên và môn học"
+                sequence="10"/>
+
+        <menuitem id="payroll_teacher_course_root"
+                parent="payroll_teacher_setup_root"
+                        name="Lớp học"/>
+
+
+        <menuitem id="payroll_teacher_course" 
+                name="Lớp học"
+                action="payroll_teacher_course_action"
+                parent="payroll_teacher_course_root"/>
+</odoo>

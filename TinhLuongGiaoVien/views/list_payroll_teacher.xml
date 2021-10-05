@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data noupdate="1">
+            <record id="list_payroll_teacher_sequence" model="ir.sequence">
+                <field name="name">Danh sách tính lương</field>
+                <field name="code">list.payroll.teacher.sequence</field>
+                <field name="prefix">LTL</field>
+                <field name="padding">4</field>
+            </record>
+        </data>
+
+        <record id="list_payroll_teacher_action" model="ir.actions.act_window">
+            <field name="name">Tính lương</field>
+            <field name="res_model">list.payroll.teacher</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Danh sách tính lương giảng viên!
+                </p>
+            </field>
+        </record>
+
+        <record id="list_payroll_teacher_action_form" model="ir.ui.view">
+            <field name="name">Bảng danh sách tính lương</field>
+            <field name="model">list.payroll.teacher</field>
+            <field name="arch" type="xml">
+                <form string="List Payroll teacher">
+                    <header>
+                        <button string="Thanh toán" name="change_pay_check" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="id_list_payroll_teacher"/>
+                        </h1>
+                        <group>
+                            <field name="semester"/>
+                            <field name="time"/>
+                        </group>
+                        <separator string="Thông tin chi tiết"/>
+                        <field name="course_of_teacher">
+                            <tree string="Cost Of Course For List Teacher">
+                                <field name="id_cocft"/>
+                                <field name="teacher"/>
+                                <field name="coefficient_teacher"/>
+                                <field name="credit"/>
+                                <field name="teaching_time"/>
+                                <field name="coefficient_students"/>
+                                <field name="sum_coefficient"/>
+                                <field name="sum_payroll"/>
+                            </tree>
+                        </field>
+                        <h3>
+                            <field name="pay_check" widget="badge" optional="show"/>
+                        </h3>
+                        <h3>
+                            Tổng tiền: <field name="sum_cost"/> VNĐ
+                        </h3>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_list_payroll_teacher_professor">
+            <field name="name">Tính lương giảng viên</field>
+            <field name="model">list.payroll.teacher</field>
+            <field name="arch" type="xml">
+                <tree string="Payroll Teacher">
+                    <field name="id_list_payroll_teacher"/>
+                    <field name="semester"/>
+                    <field name="time"/>
+                    <field name="pay_check"/>
+                    <field name="sum_cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="payroll_teacher_root"
+                name="Tính lương giáo viên"
+                sequence="10"/>
+
+
+        <menuitem id="list_payroll_teacher" 
+                name="Tính lương giảng viên theo kỳ"
+                action="list_payroll_teacher_action"
+                parent="payroll_teacher_root"
+                sequence="10"/>
+</odoo>

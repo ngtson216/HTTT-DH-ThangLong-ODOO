@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data noupdate="1">
+            <record id="payroll_teacher_subject_sequence" model="ir.sequence">
+                <field name="name">Thứ tự Môn học</field>
+                <field name="code">subject.sequence</field>
+                <field name="prefix">MH</field>
+                <field name="padding">3</field>
+            </record>
+        </data>
+
+        <record id="payroll_teacher_subject_action" model="ir.actions.act_window">
+            <field name="name">Môn học</field>
+            <field name="res_model">subject</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Chưa có môn học nào để hiển thị!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_payroll_teacher_subject">
+            <field name="name">Danh sách giảng viên</field>
+            <field name="model">subject</field>
+            <field name="arch" type="xml">
+                <tree string="Subject">
+                    <field name="id_subject"/>
+                    <field name="name_subject"/>
+                    <field name="rank"/>
+                    <field name="coefficient_subject"/>
+                    <field name="credit"/>
+                    <field name="subject_sequence"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="payroll_teacher_setup_root"
+                name="Giảng viên và môn học"
+                sequence="10"/>
+
+
+        <menuitem id="payroll_teacher_subject" 
+                name="Môn học"
+                action="payroll_teacher_subject_action"
+                parent="payroll_teacher_setup_root"
+                sequence="10"/>
+</odoo>

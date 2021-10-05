@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <data noupdate="1">
+            <record id="payroll_teacher_professor_sequence" model="ir.sequence">
+                <field name="name">Thứ tự Ngành</field>
+                <field name="code">professor.sequence</field>
+                <field name="prefix">GVTLU</field>
+                <field name="padding">3</field>
+            </record>
+        </data>
+
+        <record id="payroll_teacher_professor_action" model="ir.actions.act_window">
+            <field name="name">Giảng viên</field>
+            <field name="res_model">teacher</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Chưa có giảng viên nào để hiển thị!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_payroll_teacher_professor">
+            <field name="name">Danh sách giảng viên</field>
+            <field name="model">teacher</field>
+            <field name="arch" type="xml">
+                <tree string="Professor">
+                    <field name="employee_id"/>
+                    <field name="id_teacher"/>
+                    <field name="name_teacher"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+                    <field name="rank"/>
+                    <field name="coefficient_teacher"/>
+                    <field name="name_department"/>
+                    <field name="id_department"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="payroll_teacher_setup_root"
+                name="Giảng viên và môn học"
+                sequence="10"/>
+
+
+        <menuitem id="payroll_teacher_professor" 
+                name="Giảng viên"
+                action="payroll_teacher_professor_action"
+                parent="payroll_teacher_setup_root"
+                sequence="10"/>
+</odoo>
